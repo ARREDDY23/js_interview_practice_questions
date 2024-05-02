@@ -1,21 +1,42 @@
 let counter =0;
-
-const getSuggestions = () => {
-
-    console.log("called"+ counter++);
+const getData =() =>{
+    console.log("vvvv" + counter++)
 }
 
 
-const doDebouncing = (fn, d) =>{
-    let timer
-    return function(){
-        clearTimeout(timer);
+const doDebounce = (fn, d) =>{
+let timer;
+    return () =>{
+        clearTimeout(timer)
         timer = setTimeout(() =>
-            {
-                fn.apply(this, arguments)
-            }, d);
+        {
+            fn.apply(this);
+        },d)
     }
-
 }
 
-const onSuggestionChange = doDebouncing(getSuggestions, 300)
+const debounce = doDebounce(getData, 200);
+
+
+
+// let counter =0;
+
+// const getSuggestions = () => {
+
+//     console.log("called"+ counter++);
+// }
+
+
+// const doDebouncing = (fn, d) =>{
+//     let timer
+    // return function(){
+    //     clearTimeout(timer);
+    //     timer = setTimeout(() =>
+    //         {
+    //             fn.apply(this, arguments)
+    //         }, d);
+    // }
+
+// }
+
+// const onSuggestionChange = doDebouncing(getSuggestions, 300)
