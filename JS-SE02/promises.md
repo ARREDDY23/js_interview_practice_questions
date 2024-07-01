@@ -54,3 +54,48 @@ Promises :- Promise is an object that represents eventual completion or failure 
 
 Creating a promise :--
 
+const cart = ["shoes", "tracks", "iphone"];
+
+const promise = createOrder(cart);
+
+console.log(promise);
+
+promise.then((orderId)=>{
+    console.log(orderId)
+})
+.catch((err)=>{
+    console.log(err.message);
+});
+
+function createOrder(cart){
+
+    const pr = new Promise((resolve, reject) => {
+
+        if(!validateCart(cart)){
+            const err = new Error ("");
+            reject(err);
+        }
+
+        const orderId = "12345";
+        // if(orderId){
+        //     resolve(orderId);
+        // }
+
+        if(orderId){
+            setTimeout(()=>{
+                resolve(orderId);
+            },5000);
+        }
+    });
+
+    return pr;
+}
+
+function validateCart(cart){
+    return false;
+}
+
+
+-> if we have n number of .then ...if we want to execute even there is error at some point ...use catch
+-> if there is .then after catch...it will be executed
+
