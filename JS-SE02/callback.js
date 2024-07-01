@@ -14,3 +14,15 @@ api.createOrder(cart, function(){
         )
     })
 })
+
+
+createOrder(cart)
+    .then((id)=>{
+        proceedToPayment(id)
+    })
+    .then((paymentInfo)=>{
+        showOrderSummary(paymentInfo);
+    })
+    .then((paymentInfo)=>{
+        updateWallet(paymentInfo);
+    });

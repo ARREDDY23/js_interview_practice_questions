@@ -38,14 +38,19 @@ Promises :- Promise is an object that represents eventual completion or failure 
 ->Proimse will have two comp -- 1.PromiseState(Pending, Fullfilled, Rejected) 2.PromiseResult
 
 ->Promises are immutable**
--> Above callback hell can be handled with promises
+-> Above callback hell can be handled with promise chaining
     createOrder(cart)
     .then((id)=>{
-        proceedToPayment(id)
+        return proceedToPayment(id)
     })
     .then((paymentInfo)=>{
-        showOrderSummary(paymentInfo);
+        return showOrderSummary(paymentInfo);
     })
     .then((paymentInfo)=>{
-        updateWallet(paymentInfo);
+        return updateWallet(paymentInfo);
     });
+
+    ** add return when promise is inside one promise
+
+Creating a promise :--
+
